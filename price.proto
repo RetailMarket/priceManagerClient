@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package priceManagerClient;
+
+service Price {
+    rpc SwitchToLatestVersion (ChangeLatestRequest) returns (ChangeLatestResponse) {
+    }
+}
+
+message ChangeLatestRequest {
+    repeated int32 productId = 1;
+}
+
+message ChangeLatestResponse {
+    string message = 1;
+}
