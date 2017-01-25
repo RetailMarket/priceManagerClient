@@ -5,12 +5,26 @@ package priceManagerClient;
 service PriceManager {
     rpc SwitchToLatestVersion (ChangeLatestRequest) returns (ChangeLatestResponse) {
     }
+    rpc GetPriceUpdateRecords (RecordsFetchRequest) returns (RecordsFetchResponse) {
+    }
 }
 
 message ChangeLatestRequest {
     repeated int32 productId = 1;
 }
 
+message UpdateProductPriceEntry {
+    int32 product_id = 1;
+    string version = 2;
+}
+
 message ChangeLatestResponse {
     string message = 1;
+}
+
+message RecordsFetchRequest {
+}
+
+message RecordsFetchResponse {
+    repeated UpdateProductPriceEntry products = 1;
 }
