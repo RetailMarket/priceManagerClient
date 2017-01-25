@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package priceManagerClient;
 
-service Price {
+service PriceManager {
     rpc SwitchToLatestVersion (ChangeLatestRequest) returns (ChangeLatestResponse) {
     }
 }
