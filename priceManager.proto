@@ -5,7 +5,7 @@ package priceManagerClient;
 service PriceManager {
     rpc SwitchToLatestVersion (ChangeLatestRequest) returns (ChangeLatestResponse) {
     }
-    rpc GetPriceUpdateRecords (RecordsFetchRequest) returns (RecordsFetchResponse) {
+    rpc GetPriceUpdateRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
 }
 
@@ -22,9 +22,9 @@ message ChangeLatestResponse {
     string message = 1;
 }
 
-message RecordsFetchRequest {
+message FetchRecordsRequest {
 }
 
-message RecordsFetchResponse {
+message FetchRecordsResponse {
     repeated UpdateProductPriceEntry products = 1;
 }

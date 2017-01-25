@@ -12,8 +12,8 @@ It has these top-level messages:
 	ChangeLatestRequest
 	UpdateProductPriceEntry
 	ChangeLatestResponse
-	RecordsFetchRequest
-	RecordsFetchResponse
+	FetchRecordsRequest
+	FetchRecordsResponse
 */
 package priceManagerClient
 
@@ -93,24 +93,24 @@ func (m *ChangeLatestResponse) GetMessage() string {
 	return ""
 }
 
-type RecordsFetchRequest struct {
+type FetchRecordsRequest struct {
 }
 
-func (m *RecordsFetchRequest) Reset()                    { *m = RecordsFetchRequest{} }
-func (m *RecordsFetchRequest) String() string            { return proto.CompactTextString(m) }
-func (*RecordsFetchRequest) ProtoMessage()               {}
-func (*RecordsFetchRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (m *FetchRecordsRequest) Reset()                    { *m = FetchRecordsRequest{} }
+func (m *FetchRecordsRequest) String() string            { return proto.CompactTextString(m) }
+func (*FetchRecordsRequest) ProtoMessage()               {}
+func (*FetchRecordsRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
-type RecordsFetchResponse struct {
+type FetchRecordsResponse struct {
 	Products []*UpdateProductPriceEntry `protobuf:"bytes,1,rep,name=products" json:"products,omitempty"`
 }
 
-func (m *RecordsFetchResponse) Reset()                    { *m = RecordsFetchResponse{} }
-func (m *RecordsFetchResponse) String() string            { return proto.CompactTextString(m) }
-func (*RecordsFetchResponse) ProtoMessage()               {}
-func (*RecordsFetchResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (m *FetchRecordsResponse) Reset()                    { *m = FetchRecordsResponse{} }
+func (m *FetchRecordsResponse) String() string            { return proto.CompactTextString(m) }
+func (*FetchRecordsResponse) ProtoMessage()               {}
+func (*FetchRecordsResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
-func (m *RecordsFetchResponse) GetProducts() []*UpdateProductPriceEntry {
+func (m *FetchRecordsResponse) GetProducts() []*UpdateProductPriceEntry {
 	if m != nil {
 		return m.Products
 	}
@@ -121,8 +121,8 @@ func init() {
 	proto.RegisterType((*ChangeLatestRequest)(nil), "priceManagerClient.ChangeLatestRequest")
 	proto.RegisterType((*UpdateProductPriceEntry)(nil), "priceManagerClient.UpdateProductPriceEntry")
 	proto.RegisterType((*ChangeLatestResponse)(nil), "priceManagerClient.ChangeLatestResponse")
-	proto.RegisterType((*RecordsFetchRequest)(nil), "priceManagerClient.RecordsFetchRequest")
-	proto.RegisterType((*RecordsFetchResponse)(nil), "priceManagerClient.RecordsFetchResponse")
+	proto.RegisterType((*FetchRecordsRequest)(nil), "priceManagerClient.FetchRecordsRequest")
+	proto.RegisterType((*FetchRecordsResponse)(nil), "priceManagerClient.FetchRecordsResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -137,7 +137,7 @@ const _ = grpc.SupportPackageIsVersion4
 
 type PriceManagerClient interface {
 	SwitchToLatestVersion(ctx context.Context, in *ChangeLatestRequest, opts ...grpc.CallOption) (*ChangeLatestResponse, error)
-	GetPriceUpdateRecords(ctx context.Context, in *RecordsFetchRequest, opts ...grpc.CallOption) (*RecordsFetchResponse, error)
+	GetPriceUpdateRecords(ctx context.Context, in *FetchRecordsRequest, opts ...grpc.CallOption) (*FetchRecordsResponse, error)
 }
 
 type priceManagerClient struct {
@@ -157,8 +157,8 @@ func (c *priceManagerClient) SwitchToLatestVersion(ctx context.Context, in *Chan
 	return out, nil
 }
 
-func (c *priceManagerClient) GetPriceUpdateRecords(ctx context.Context, in *RecordsFetchRequest, opts ...grpc.CallOption) (*RecordsFetchResponse, error) {
-	out := new(RecordsFetchResponse)
+func (c *priceManagerClient) GetPriceUpdateRecords(ctx context.Context, in *FetchRecordsRequest, opts ...grpc.CallOption) (*FetchRecordsResponse, error) {
+	out := new(FetchRecordsResponse)
 	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/GetPriceUpdateRecords", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -170,7 +170,7 @@ func (c *priceManagerClient) GetPriceUpdateRecords(ctx context.Context, in *Reco
 
 type PriceManagerServer interface {
 	SwitchToLatestVersion(context.Context, *ChangeLatestRequest) (*ChangeLatestResponse, error)
-	GetPriceUpdateRecords(context.Context, *RecordsFetchRequest) (*RecordsFetchResponse, error)
+	GetPriceUpdateRecords(context.Context, *FetchRecordsRequest) (*FetchRecordsResponse, error)
 }
 
 func RegisterPriceManagerServer(s *grpc.Server, srv PriceManagerServer) {
@@ -196,7 +196,7 @@ func _PriceManager_SwitchToLatestVersion_Handler(srv interface{}, ctx context.Co
 }
 
 func _PriceManager_GetPriceUpdateRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecordsFetchRequest)
+	in := new(FetchRecordsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -208,7 +208,7 @@ func _PriceManager_GetPriceUpdateRecords_Handler(srv interface{}, ctx context.Co
 		FullMethod: "/priceManagerClient.PriceManager/GetPriceUpdateRecords",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PriceManagerServer).GetPriceUpdateRecords(ctx, req.(*RecordsFetchRequest))
+		return srv.(PriceManagerServer).GetPriceUpdateRecords(ctx, req.(*FetchRecordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -245,11 +245,11 @@ var fileDescriptor0 = []byte{
 	0x15, 0x99, 0x77, 0x76, 0x0a, 0xd0, 0xdd, 0x2d, 0xab, 0x86, 0x19, 0xf4, 0x98, 0x2c, 0x82, 0xbd,
 	0x57, 0x34, 0xb6, 0xd2, 0x2a, 0xda, 0x9a, 0x04, 0x71, 0x28, 0x36, 0x4f, 0x7e, 0x01, 0xa3, 0x7e,
 	0x10, 0x5b, 0x6b, 0x65, 0xb1, 0x61, 0x3c, 0xa3, 0xb5, 0xb2, 0xc0, 0x56, 0x2d, 0x14, 0x9b, 0x27,
-	0x1f, 0xc3, 0x50, 0x60, 0xa6, 0x4d, 0x6e, 0xaf, 0x90, 0xb2, 0xb2, 0x8b, 0xce, 0x97, 0x30, 0xea,
+	0x1f, 0xc3, 0xf0, 0x0a, 0x29, 0x2b, 0x05, 0x66, 0xda, 0xe4, 0xb6, 0x8b, 0xce, 0x97, 0x30, 0xea,
 	0xc3, 0x9d, 0xd0, 0x02, 0xf6, 0xbb, 0x1c, 0xb6, 0x6d, 0x74, 0x30, 0x3d, 0x4f, 0x7e, 0x0f, 0x92,
 	0xfc, 0x51, 0x4c, 0x7c, 0x91, 0xa7, 0x1f, 0x01, 0x1c, 0xa6, 0x3f, 0x88, 0x6c, 0x05, 0xe3, 0xbb,
 	0xb7, 0x8a, 0xb2, 0xf2, 0x5e, 0xbb, 0xf0, 0x8f, 0xae, 0x13, 0x3b, 0xf3, 0x19, 0x78, 0xe6, 0x3e,
-	0x8e, 0xff, 0x3f, 0x74, 0x2d, 0xf8, 0xa0, 0x71, 0x5b, 0xa0, 0x4b, 0xe6, 0xb2, 0x76, 0x6d, 0xfd,
+	0x8e, 0xff, 0x3f, 0x74, 0x2d, 0xf8, 0xa0, 0x71, 0x5b, 0xa0, 0x4b, 0xe6, 0xb2, 0x76, 0x45, 0xfd,
 	0x6e, 0x9e, 0x85, 0xfc, 0x6e, 0xbe, 0xcd, 0xf8, 0xe0, 0x69, 0xb7, 0xfd, 0x3a, 0xb3, 0xcf, 0x00,
-	0x00, 0x00, 0xff, 0xff, 0x73, 0xa8, 0x6f, 0x4f, 0x50, 0x02, 0x00, 0x00,
+	0x00, 0x00, 0xff, 0xff, 0xfd, 0xd8, 0x37, 0x09, 0x50, 0x02, 0x00, 0x00,
 }
