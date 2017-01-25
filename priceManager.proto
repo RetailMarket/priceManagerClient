@@ -7,13 +7,15 @@ service PriceManager {
     }
     rpc GetPriceUpdateRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
+    rpc ChangeStatusToPicked (ChangeStatusRequest) returns (ChangeStatusResponse) {
+    }
 }
 
 message ChangeLatestRequest {
     repeated int32 productId = 1;
 }
 
-message UpdateProductPriceEntry {
+message ProductEntry {
     int32 product_id = 1;
     string version = 2;
 }
@@ -26,5 +28,13 @@ message FetchRecordsRequest {
 }
 
 message FetchRecordsResponse {
-    repeated UpdateProductPriceEntry products = 1;
+    repeated ProductEntry products = 1;
+}
+
+message ChangeStatusRequest {
+    repeated ProductEntry products = 1;
+}
+
+message ChangeStatusResponse {
+    string message = 1;
 }
