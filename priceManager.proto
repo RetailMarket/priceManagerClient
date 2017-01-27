@@ -9,6 +9,9 @@ service PriceManager {
     }
     rpc ChangeStatusToPicked (ChangeStatusRequest) returns (ChangeStatusResponse) {
     }
+    rpc ChangeStatusToCompleted (ChangeStatusRequest) returns (ChangeStatusResponse) {
+    }
+
 }
 
 message ChangeLatestRequest {
