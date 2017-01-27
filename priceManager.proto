@@ -3,41 +3,30 @@ syntax = "proto3";
 package priceManagerClient;
 
 service PriceManager {
-    rpc SwitchToLatestVersion (ChangeLatestRequest) returns (ChangeLatestResponse) {
-    }
     rpc GetPriceUpdateRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
-    rpc ChangeStatusToPicked (ChangeStatusRequest) returns (ChangeStatusResponse) {
+    rpc NotifySuccessfullyPicked (NotifyRequest) returns (NotifyResponse) {
     }
-    rpc ChangeStatusToCompleted (ChangeStatusRequest) returns (ChangeStatusResponse) {
+    rpc NotifySuccessfullyProcessed (NotifyRequest) returns (NotifyResponse) {
     }
-
 }
 
-message ChangeLatestRequest {
-    repeated int32 productId = 1;
-}
-
-message ProductEntry {
+message Entry {
     int32 product_id = 1;
     string version = 2;
-}
-
-message ChangeLatestResponse {
-    string message = 1;
 }
 
 message FetchRecordsRequest {
 }
 
 message FetchRecordsResponse {
-    repeated ProductEntry products = 1;
+    repeated Entry entries = 1;
 }
 
-message ChangeStatusRequest {
-    repeated ProductEntry products = 1;
+message NotifyRequest {
+    repeated Entry entries = 1;
 }
 
-message ChangeStatusResponse {
+message NotifyResponse {
     string message = 1;
 }
