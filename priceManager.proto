@@ -9,6 +9,8 @@ service PriceManager {
     }
     rpc NotifySuccessfullyProcessed (NotifyRequest) returns (NotifyResponse) {
     }
+    rpc GetAllRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
+    }
 }
 
 message Entry {
