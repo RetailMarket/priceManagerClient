@@ -3,13 +3,13 @@ syntax = "proto3";
 package priceManagerClient;
 
 service PriceManager {
-    rpc GetPriceUpdateRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
+    rpc PriceUpdateRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
+    }
+    rpc AllRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
     rpc NotifySuccessfullyPicked (NotifyRequest) returns (NotifyResponse) {
     }
     rpc NotifySuccessfullyProcessed (NotifyRequest) returns (NotifyResponse) {
-    }
-    rpc GetAllRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
 }
 
