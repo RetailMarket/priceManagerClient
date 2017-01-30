@@ -16,6 +16,10 @@ service PriceManager {
 message Entry {
     int32 product_id = 1;
     string version = 2;
+    string product_name = 3;
+    int32 cost = 4;
+    string status = 5;
+    bool is_latest = 6;
 }
 
 message FetchRecordsRequest {
