@@ -11,7 +11,7 @@ service PriceManager {
     }
     rpc NotifySuccessfullyProcessed (NotifyRequest) returns (NotifyResponse) {
     }
-    rpc UpdateRecord (UpdateEntryRequest) returns (UpdateEntryResponse) {
+    rpc InsertNewUpdateRequest (UpdateEntryRequest) returns (UpdateEntryResponse) {
     }
 }
 
