@@ -5,7 +5,7 @@ package priceManagerClient;
 service PriceManager {
     rpc PriceUpdateRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
-    rpc AllRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
+    rpc AllLatestRecords (FetchRecordsRequest) returns (FetchRecordsResponse) {
     }
     rpc NotifySuccessfullyPicked (NotifyRequest) returns (NotifyResponse) {
     }
