@@ -10,12 +10,10 @@ It is generated from these files:
 
 It has these top-level messages:
 	Entry
-	FetchRecordsRequest
-	FetchRecordsResponse
-	NotifyRequest
-	NotifyResponse
-	UpdateEntryRequest
-	UpdateEntryResponse
+	RecordRequest
+	RecordResponse
+	RecordsRequest
+	RecordsResponse
 */
 package priceManagerClient
 
@@ -95,96 +93,72 @@ func (m *Entry) GetIsLatest() bool {
 	return false
 }
 
-type FetchRecordsRequest struct {
-}
-
-func (m *FetchRecordsRequest) Reset()                    { *m = FetchRecordsRequest{} }
-func (m *FetchRecordsRequest) String() string            { return proto.CompactTextString(m) }
-func (*FetchRecordsRequest) ProtoMessage()               {}
-func (*FetchRecordsRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-type FetchRecordsResponse struct {
-	Entries []*Entry `protobuf:"bytes,1,rep,name=entries" json:"entries,omitempty"`
-}
-
-func (m *FetchRecordsResponse) Reset()                    { *m = FetchRecordsResponse{} }
-func (m *FetchRecordsResponse) String() string            { return proto.CompactTextString(m) }
-func (*FetchRecordsResponse) ProtoMessage()               {}
-func (*FetchRecordsResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
-
-func (m *FetchRecordsResponse) GetEntries() []*Entry {
-	if m != nil {
-		return m.Entries
-	}
-	return nil
-}
-
-type NotifyRequest struct {
-	Entries []*Entry `protobuf:"bytes,1,rep,name=entries" json:"entries,omitempty"`
-}
-
-func (m *NotifyRequest) Reset()                    { *m = NotifyRequest{} }
-func (m *NotifyRequest) String() string            { return proto.CompactTextString(m) }
-func (*NotifyRequest) ProtoMessage()               {}
-func (*NotifyRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
-
-func (m *NotifyRequest) GetEntries() []*Entry {
-	if m != nil {
-		return m.Entries
-	}
-	return nil
-}
-
-type NotifyResponse struct {
-	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
-}
-
-func (m *NotifyResponse) Reset()                    { *m = NotifyResponse{} }
-func (m *NotifyResponse) String() string            { return proto.CompactTextString(m) }
-func (*NotifyResponse) ProtoMessage()               {}
-func (*NotifyResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
-
-func (m *NotifyResponse) GetMessage() string {
-	if m != nil {
-		return m.Message
-	}
-	return ""
-}
-
-type UpdateEntryRequest struct {
+type RecordRequest struct {
 	ProductId int32 `protobuf:"varint,1,opt,name=product_id,json=productId" json:"product_id,omitempty"`
 	Cost      int32 `protobuf:"varint,2,opt,name=cost" json:"cost,omitempty"`
 }
 
-func (m *UpdateEntryRequest) Reset()                    { *m = UpdateEntryRequest{} }
-func (m *UpdateEntryRequest) String() string            { return proto.CompactTextString(m) }
-func (*UpdateEntryRequest) ProtoMessage()               {}
-func (*UpdateEntryRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (m *RecordRequest) Reset()                    { *m = RecordRequest{} }
+func (m *RecordRequest) String() string            { return proto.CompactTextString(m) }
+func (*RecordRequest) ProtoMessage()               {}
+func (*RecordRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *UpdateEntryRequest) GetProductId() int32 {
+func (m *RecordRequest) GetProductId() int32 {
 	if m != nil {
 		return m.ProductId
 	}
 	return 0
 }
 
-func (m *UpdateEntryRequest) GetCost() int32 {
+func (m *RecordRequest) GetCost() int32 {
 	if m != nil {
 		return m.Cost
 	}
 	return 0
 }
 
-type UpdateEntryResponse struct {
+type RecordResponse struct {
 	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
 }
 
-func (m *UpdateEntryResponse) Reset()                    { *m = UpdateEntryResponse{} }
-func (m *UpdateEntryResponse) String() string            { return proto.CompactTextString(m) }
-func (*UpdateEntryResponse) ProtoMessage()               {}
-func (*UpdateEntryResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+func (m *RecordResponse) Reset()                    { *m = RecordResponse{} }
+func (m *RecordResponse) String() string            { return proto.CompactTextString(m) }
+func (*RecordResponse) ProtoMessage()               {}
+func (*RecordResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
-func (m *UpdateEntryResponse) GetMessage() string {
+func (m *RecordResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+type RecordsRequest struct {
+	Entries []*Entry `protobuf:"bytes,1,rep,name=entries" json:"entries,omitempty"`
+}
+
+func (m *RecordsRequest) Reset()                    { *m = RecordsRequest{} }
+func (m *RecordsRequest) String() string            { return proto.CompactTextString(m) }
+func (*RecordsRequest) ProtoMessage()               {}
+func (*RecordsRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+
+func (m *RecordsRequest) GetEntries() []*Entry {
+	if m != nil {
+		return m.Entries
+	}
+	return nil
+}
+
+type RecordsResponse struct {
+	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
+}
+
+func (m *RecordsResponse) Reset()                    { *m = RecordsResponse{} }
+func (m *RecordsResponse) String() string            { return proto.CompactTextString(m) }
+func (*RecordsResponse) ProtoMessage()               {}
+func (*RecordsResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *RecordsResponse) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
@@ -193,12 +167,10 @@ func (m *UpdateEntryResponse) GetMessage() string {
 
 func init() {
 	proto.RegisterType((*Entry)(nil), "priceManagerClient.Entry")
-	proto.RegisterType((*FetchRecordsRequest)(nil), "priceManagerClient.FetchRecordsRequest")
-	proto.RegisterType((*FetchRecordsResponse)(nil), "priceManagerClient.FetchRecordsResponse")
-	proto.RegisterType((*NotifyRequest)(nil), "priceManagerClient.NotifyRequest")
-	proto.RegisterType((*NotifyResponse)(nil), "priceManagerClient.NotifyResponse")
-	proto.RegisterType((*UpdateEntryRequest)(nil), "priceManagerClient.UpdateEntryRequest")
-	proto.RegisterType((*UpdateEntryResponse)(nil), "priceManagerClient.UpdateEntryResponse")
+	proto.RegisterType((*RecordRequest)(nil), "priceManagerClient.RecordRequest")
+	proto.RegisterType((*RecordResponse)(nil), "priceManagerClient.RecordResponse")
+	proto.RegisterType((*RecordsRequest)(nil), "priceManagerClient.RecordsRequest")
+	proto.RegisterType((*RecordsResponse)(nil), "priceManagerClient.RecordsResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -212,11 +184,11 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for PriceManager service
 
 type PriceManagerClient interface {
-	PriceUpdateRecords(ctx context.Context, in *FetchRecordsRequest, opts ...grpc.CallOption) (*FetchRecordsResponse, error)
-	AllLatestRecords(ctx context.Context, in *FetchRecordsRequest, opts ...grpc.CallOption) (*FetchRecordsResponse, error)
-	NotifySuccessfullyPicked(ctx context.Context, in *NotifyRequest, opts ...grpc.CallOption) (*NotifyResponse, error)
-	NotifySuccessfullyProcessed(ctx context.Context, in *NotifyRequest, opts ...grpc.CallOption) (*NotifyResponse, error)
-	InsertPriceUpdateRequest(ctx context.Context, in *UpdateEntryRequest, opts ...grpc.CallOption) (*UpdateEntryResponse, error)
+	PendingRecords(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error)
+	NotifyRecordsPicked(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error)
+	NotifyRecordsProcessed(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error)
+	LatestRecords(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error)
+	InsertRecord(ctx context.Context, in *RecordRequest, opts ...grpc.CallOption) (*RecordResponse, error)
 }
 
 type priceManagerClient struct {
@@ -227,45 +199,45 @@ func NewPriceManagerClient(cc *grpc.ClientConn) PriceManagerClient {
 	return &priceManagerClient{cc}
 }
 
-func (c *priceManagerClient) PriceUpdateRecords(ctx context.Context, in *FetchRecordsRequest, opts ...grpc.CallOption) (*FetchRecordsResponse, error) {
-	out := new(FetchRecordsResponse)
-	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/PriceUpdateRecords", in, out, c.cc, opts...)
+func (c *priceManagerClient) PendingRecords(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error) {
+	out := new(RecordsResponse)
+	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/PendingRecords", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *priceManagerClient) AllLatestRecords(ctx context.Context, in *FetchRecordsRequest, opts ...grpc.CallOption) (*FetchRecordsResponse, error) {
-	out := new(FetchRecordsResponse)
-	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/AllLatestRecords", in, out, c.cc, opts...)
+func (c *priceManagerClient) NotifyRecordsPicked(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error) {
+	out := new(RecordsResponse)
+	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/NotifyRecordsPicked", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *priceManagerClient) NotifySuccessfullyPicked(ctx context.Context, in *NotifyRequest, opts ...grpc.CallOption) (*NotifyResponse, error) {
-	out := new(NotifyResponse)
-	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/NotifySuccessfullyPicked", in, out, c.cc, opts...)
+func (c *priceManagerClient) NotifyRecordsProcessed(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error) {
+	out := new(RecordsResponse)
+	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/NotifyRecordsProcessed", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *priceManagerClient) NotifySuccessfullyProcessed(ctx context.Context, in *NotifyRequest, opts ...grpc.CallOption) (*NotifyResponse, error) {
-	out := new(NotifyResponse)
-	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/NotifySuccessfullyProcessed", in, out, c.cc, opts...)
+func (c *priceManagerClient) LatestRecords(ctx context.Context, in *RecordsRequest, opts ...grpc.CallOption) (*RecordsResponse, error) {
+	out := new(RecordsResponse)
+	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/LatestRecords", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *priceManagerClient) InsertPriceUpdateRequest(ctx context.Context, in *UpdateEntryRequest, opts ...grpc.CallOption) (*UpdateEntryResponse, error) {
-	out := new(UpdateEntryResponse)
-	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/InsertPriceUpdateRequest", in, out, c.cc, opts...)
+func (c *priceManagerClient) InsertRecord(ctx context.Context, in *RecordRequest, opts ...grpc.CallOption) (*RecordResponse, error) {
+	out := new(RecordResponse)
+	err := grpc.Invoke(ctx, "/priceManagerClient.PriceManager/InsertRecord", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -275,103 +247,103 @@ func (c *priceManagerClient) InsertPriceUpdateRequest(ctx context.Context, in *U
 // Server API for PriceManager service
 
 type PriceManagerServer interface {
-	PriceUpdateRecords(context.Context, *FetchRecordsRequest) (*FetchRecordsResponse, error)
-	AllLatestRecords(context.Context, *FetchRecordsRequest) (*FetchRecordsResponse, error)
-	NotifySuccessfullyPicked(context.Context, *NotifyRequest) (*NotifyResponse, error)
-	NotifySuccessfullyProcessed(context.Context, *NotifyRequest) (*NotifyResponse, error)
-	InsertPriceUpdateRequest(context.Context, *UpdateEntryRequest) (*UpdateEntryResponse, error)
+	PendingRecords(context.Context, *RecordsRequest) (*RecordsResponse, error)
+	NotifyRecordsPicked(context.Context, *RecordsRequest) (*RecordsResponse, error)
+	NotifyRecordsProcessed(context.Context, *RecordsRequest) (*RecordsResponse, error)
+	LatestRecords(context.Context, *RecordsRequest) (*RecordsResponse, error)
+	InsertRecord(context.Context, *RecordRequest) (*RecordResponse, error)
 }
 
 func RegisterPriceManagerServer(s *grpc.Server, srv PriceManagerServer) {
 	s.RegisterService(&_PriceManager_serviceDesc, srv)
 }
 
-func _PriceManager_PriceUpdateRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FetchRecordsRequest)
+func _PriceManager_PendingRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PriceManagerServer).PriceUpdateRecords(ctx, in)
+		return srv.(PriceManagerServer).PendingRecords(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/priceManagerClient.PriceManager/PriceUpdateRecords",
+		FullMethod: "/priceManagerClient.PriceManager/PendingRecords",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PriceManagerServer).PriceUpdateRecords(ctx, req.(*FetchRecordsRequest))
+		return srv.(PriceManagerServer).PendingRecords(ctx, req.(*RecordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PriceManager_AllLatestRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FetchRecordsRequest)
+func _PriceManager_NotifyRecordsPicked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PriceManagerServer).AllLatestRecords(ctx, in)
+		return srv.(PriceManagerServer).NotifyRecordsPicked(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/priceManagerClient.PriceManager/AllLatestRecords",
+		FullMethod: "/priceManagerClient.PriceManager/NotifyRecordsPicked",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PriceManagerServer).AllLatestRecords(ctx, req.(*FetchRecordsRequest))
+		return srv.(PriceManagerServer).NotifyRecordsPicked(ctx, req.(*RecordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PriceManager_NotifySuccessfullyPicked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotifyRequest)
+func _PriceManager_NotifyRecordsProcessed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PriceManagerServer).NotifySuccessfullyPicked(ctx, in)
+		return srv.(PriceManagerServer).NotifyRecordsProcessed(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/priceManagerClient.PriceManager/NotifySuccessfullyPicked",
+		FullMethod: "/priceManagerClient.PriceManager/NotifyRecordsProcessed",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PriceManagerServer).NotifySuccessfullyPicked(ctx, req.(*NotifyRequest))
+		return srv.(PriceManagerServer).NotifyRecordsProcessed(ctx, req.(*RecordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PriceManager_NotifySuccessfullyProcessed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotifyRequest)
+func _PriceManager_LatestRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PriceManagerServer).NotifySuccessfullyProcessed(ctx, in)
+		return srv.(PriceManagerServer).LatestRecords(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/priceManagerClient.PriceManager/NotifySuccessfullyProcessed",
+		FullMethod: "/priceManagerClient.PriceManager/LatestRecords",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PriceManagerServer).NotifySuccessfullyProcessed(ctx, req.(*NotifyRequest))
+		return srv.(PriceManagerServer).LatestRecords(ctx, req.(*RecordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PriceManager_InsertPriceUpdateRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateEntryRequest)
+func _PriceManager_InsertRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PriceManagerServer).InsertPriceUpdateRequest(ctx, in)
+		return srv.(PriceManagerServer).InsertRecord(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/priceManagerClient.PriceManager/InsertPriceUpdateRequest",
+		FullMethod: "/priceManagerClient.PriceManager/InsertRecord",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PriceManagerServer).InsertPriceUpdateRequest(ctx, req.(*UpdateEntryRequest))
+		return srv.(PriceManagerServer).InsertRecord(ctx, req.(*RecordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -381,24 +353,24 @@ var _PriceManager_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*PriceManagerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "PriceUpdateRecords",
-			Handler:    _PriceManager_PriceUpdateRecords_Handler,
+			MethodName: "PendingRecords",
+			Handler:    _PriceManager_PendingRecords_Handler,
 		},
 		{
-			MethodName: "AllLatestRecords",
-			Handler:    _PriceManager_AllLatestRecords_Handler,
+			MethodName: "NotifyRecordsPicked",
+			Handler:    _PriceManager_NotifyRecordsPicked_Handler,
 		},
 		{
-			MethodName: "NotifySuccessfullyPicked",
-			Handler:    _PriceManager_NotifySuccessfullyPicked_Handler,
+			MethodName: "NotifyRecordsProcessed",
+			Handler:    _PriceManager_NotifyRecordsProcessed_Handler,
 		},
 		{
-			MethodName: "NotifySuccessfullyProcessed",
-			Handler:    _PriceManager_NotifySuccessfullyProcessed_Handler,
+			MethodName: "LatestRecords",
+			Handler:    _PriceManager_LatestRecords_Handler,
 		},
 		{
-			MethodName: "InsertPriceUpdateRequest",
-			Handler:    _PriceManager_InsertPriceUpdateRequest_Handler,
+			MethodName: "InsertRecord",
+			Handler:    _PriceManager_InsertRecord_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -408,31 +380,28 @@ var _PriceManager_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("priceManager.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 413 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x54, 0xed, 0x6a, 0xd4, 0x40,
-	0x14, 0x35, 0xed, 0x7e, 0x74, 0x6f, 0xab, 0xc8, 0xad, 0xca, 0xb8, 0x45, 0x48, 0xf3, 0xc3, 0x06,
-	0x7f, 0xac, 0xd0, 0x3e, 0x81, 0xf8, 0x45, 0x51, 0x4b, 0x89, 0xf8, 0xbb, 0x8c, 0x93, 0xbb, 0xeb,
-	0x60, 0x32, 0x13, 0xe7, 0x4e, 0x84, 0x7d, 0x19, 0x9f, 0xc0, 0x87, 0x94, 0x4e, 0x12, 0x35, 0x34,
-	0x18, 0x10, 0xfd, 0x37, 0xe7, 0xe4, 0xce, 0x39, 0x33, 0xe7, 0x0c, 0x01, 0xac, 0x9c, 0x56, 0xf4,
-	0x4e, 0x1a, 0xb9, 0x21, 0xb7, 0xaa, 0x9c, 0xf5, 0x16, 0x7b, 0xdc, 0xf3, 0x42, 0x93, 0xf1, 0xc9,
-	0xf7, 0x08, 0xa6, 0x2f, 0x8d, 0x77, 0x5b, 0x7c, 0x04, 0x50, 0x39, 0x9b, 0xd7, 0xca, 0x5f, 0xe9,
-	0x5c, 0x44, 0x71, 0x94, 0x4e, 0xb3, 0x45, 0xcb, 0x9c, 0xe7, 0x28, 0x60, 0xfe, 0x95, 0x1c, 0x6b,
-	0x6b, 0xc4, 0x4e, 0x1c, 0xa5, 0x8b, 0xac, 0x83, 0x78, 0x0c, 0x07, 0xdd, 0x46, 0x23, 0x4b, 0x12,
-	0xbb, 0xe1, 0xf3, 0x7e, 0xcb, 0x5d, 0xc8, 0x92, 0x10, 0x61, 0xa2, 0x2c, 0x7b, 0x31, 0x09, 0xaa,
-	0x61, 0x8d, 0x0f, 0x60, 0xc6, 0x5e, 0xfa, 0x9a, 0xc5, 0x34, 0x6c, 0x68, 0x11, 0x1e, 0xc1, 0x42,
-	0xf3, 0x55, 0x21, 0x3d, 0xb1, 0x17, 0xb3, 0x38, 0x4a, 0xf7, 0xb2, 0x3d, 0xcd, 0x6f, 0x03, 0x4e,
-	0xee, 0xc3, 0xe1, 0x2b, 0xf2, 0xea, 0x53, 0x46, 0xca, 0xba, 0x9c, 0x33, 0xfa, 0x52, 0x5f, 0xd3,
-	0x6f, 0xe0, 0x5e, 0x9f, 0xe6, 0xca, 0x1a, 0x26, 0x3c, 0x83, 0x39, 0x19, 0xef, 0x34, 0xb1, 0x88,
-	0xe2, 0xdd, 0x74, 0xff, 0xf4, 0xe1, 0xea, 0x66, 0x06, 0xab, 0x70, 0xff, 0xac, 0x9b, 0x4c, 0x5e,
-	0xc0, 0xed, 0x0b, 0xeb, 0xf5, 0x7a, 0xdb, 0xaa, 0xff, 0x9d, 0xca, 0x13, 0xb8, 0xd3, 0xa9, 0xb4,
-	0x87, 0x11, 0x30, 0x2f, 0x89, 0x59, 0x6e, 0x28, 0xa4, 0xbb, 0xc8, 0x3a, 0x98, 0xbc, 0x06, 0xfc,
-	0x50, 0xe5, 0xd2, 0x53, 0xa3, 0xd1, 0xda, 0x8e, 0x14, 0xd2, 0x65, 0xba, 0xf3, 0x2b, 0xd3, 0xe4,
-	0x29, 0x1c, 0xf6, 0x84, 0xc6, 0x9c, 0x4f, 0xbf, 0x4d, 0xe0, 0xe0, 0xf2, 0xb7, 0xbb, 0xa0, 0x06,
-	0x0c, 0xb8, 0x91, 0x69, 0xf3, 0xc4, 0x93, 0xa1, 0x0b, 0x0f, 0x14, 0xb1, 0x4c, 0xc7, 0x07, 0x9b,
-	0x33, 0x25, 0xb7, 0x70, 0x03, 0x77, 0x9f, 0x15, 0x45, 0x53, 0xec, 0x7f, 0x35, 0x52, 0x20, 0x9a,
-	0x2a, 0xde, 0xd7, 0x4a, 0x11, 0xf3, 0xba, 0x2e, 0x8a, 0xed, 0xa5, 0x56, 0x9f, 0x29, 0xc7, 0xe3,
-	0x21, 0x9d, 0x5e, 0xfd, 0xcb, 0xe4, 0x4f, 0x23, 0x3f, 0x4d, 0xd6, 0x70, 0x34, 0x60, 0xe2, 0xec,
-	0xf5, 0xfa, 0x5f, 0xfa, 0x94, 0x20, 0xce, 0x0d, 0x93, 0xf3, 0xbd, 0x9a, 0x9a, 0x17, 0xf3, 0x78,
-	0x48, 0xe1, 0xe6, 0xcb, 0x5a, 0x9e, 0x8c, 0xce, 0x75, 0x76, 0x1f, 0x67, 0xe1, 0xd7, 0x71, 0xf6,
-	0x23, 0x00, 0x00, 0xff, 0xff, 0x87, 0x8b, 0xb7, 0x35, 0x50, 0x04, 0x00, 0x00,
+	// 364 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x93, 0xcd, 0x6a, 0xdb, 0x40,
+	0x10, 0x80, 0x2b, 0xff, 0x6b, 0xfc, 0x53, 0xd8, 0x82, 0xd9, 0xb6, 0x14, 0xe4, 0xed, 0x45, 0xb4,
+	0xe0, 0x83, 0xfd, 0x06, 0x2d, 0x3e, 0x18, 0x5a, 0x63, 0x74, 0x29, 0x34, 0x07, 0x47, 0x91, 0x26,
+	0x66, 0x89, 0xbd, 0xab, 0xec, 0xac, 0x03, 0x7e, 0xa7, 0xbc, 0x57, 0x5e, 0x23, 0x64, 0xad, 0x4d,
+	0x62, 0x92, 0xd8, 0x17, 0xe7, 0xa6, 0xf9, 0xfb, 0xbe, 0xd1, 0x20, 0x01, 0x2b, 0x8c, 0xcc, 0xf0,
+	0x6f, 0xaa, 0xd2, 0x25, 0x9a, 0x61, 0x61, 0xb4, 0xd5, 0x6c, 0x2f, 0xf7, 0x7b, 0x25, 0x51, 0x59,
+	0x71, 0x1b, 0x40, 0x7d, 0xa2, 0xac, 0xd9, 0xb2, 0x6f, 0x00, 0x85, 0xd1, 0xf9, 0x26, 0xb3, 0x0b,
+	0x99, 0xf3, 0x20, 0x0a, 0xe2, 0x7a, 0x12, 0x96, 0x99, 0x69, 0xce, 0x38, 0x34, 0x6f, 0xd0, 0x90,
+	0xd4, 0x8a, 0x57, 0xa2, 0x20, 0x0e, 0x13, 0x1f, 0xb2, 0x01, 0x74, 0xfc, 0xa0, 0x4a, 0xd7, 0xc8,
+	0xab, 0xae, 0xdc, 0x2e, 0x73, 0xb3, 0x74, 0x8d, 0x8c, 0x41, 0x2d, 0xd3, 0x64, 0x79, 0xcd, 0x51,
+	0xdd, 0x33, 0xeb, 0x43, 0x83, 0x6c, 0x6a, 0x37, 0xc4, 0xeb, 0x6e, 0xa0, 0x8c, 0xd8, 0x57, 0x08,
+	0x25, 0x2d, 0x56, 0xa9, 0x45, 0xb2, 0xbc, 0x11, 0x05, 0x71, 0x2b, 0x69, 0x49, 0xfa, 0xe3, 0x62,
+	0xf1, 0x0b, 0xba, 0x09, 0x66, 0xda, 0xe4, 0x09, 0x5e, 0x6f, 0x90, 0xec, 0xb1, 0xad, 0xbd, 0xb8,
+	0xf2, 0x24, 0x16, 0x3f, 0xa0, 0xe7, 0x19, 0x54, 0x68, 0x45, 0xf8, 0xf0, 0x6e, 0x6b, 0x24, 0x4a,
+	0x97, 0xe8, 0x08, 0x61, 0xe2, 0x43, 0x31, 0xf1, 0xbd, 0xe4, 0x85, 0x63, 0x68, 0xa2, 0xb2, 0x46,
+	0x22, 0xf1, 0x20, 0xaa, 0xc6, 0xed, 0xd1, 0xe7, 0xe1, 0xcb, 0xb3, 0x0e, 0xdd, 0x49, 0x13, 0xdf,
+	0x29, 0x7e, 0xc2, 0xc7, 0x47, 0xcc, 0x31, 0xe7, 0xe8, 0xae, 0x0a, 0x9d, 0xf9, 0x33, 0x24, 0x3b,
+	0x83, 0xde, 0x1c, 0x55, 0x2e, 0xd5, 0xb2, 0x84, 0x30, 0xf1, 0x9a, 0x73, 0x7f, 0xd1, 0x2f, 0xdf,
+	0x0f, 0xf6, 0xec, 0xb6, 0x10, 0x1f, 0xd8, 0x39, 0x7c, 0x9a, 0x69, 0x2b, 0x2f, 0xb7, 0x65, 0x69,
+	0x2e, 0xb3, 0x2b, 0xcc, 0x4f, 0x69, 0xc8, 0xa0, 0xbf, 0x6f, 0x30, 0x3a, 0x43, 0xa2, 0xd3, 0x4a,
+	0xfe, 0x43, 0x77, 0xf7, 0x89, 0xbc, 0xc3, 0x89, 0xfe, 0x41, 0x67, 0xaa, 0x08, 0x4d, 0xc9, 0x66,
+	0x83, 0xb7, 0xc7, 0x3c, 0x59, 0x1c, 0x6a, 0xf1, 0xe0, 0x8b, 0x86, 0xfb, 0x2f, 0xc7, 0xf7, 0x01,
+	0x00, 0x00, 0xff, 0xff, 0xfc, 0x59, 0x35, 0xe1, 0xad, 0x03, 0x00, 0x00,
 }
