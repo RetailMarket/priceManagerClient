@@ -3,19 +3,19 @@ syntax = "proto3";
 package priceManagerClient;
 
 service PriceManager {
-    rpc PendingRecords (RecordsRequest) returns (RecordsResponse) {
+    rpc PendingRecords (Request) returns (Records) {
     }
 
-    rpc NotifyRecordsPicked (RecordsRequest) returns (RecordsResponse) {
+    rpc NotifyRecordsPicked (Records) returns (Response) {
     }
 
-    rpc NotifyRecordsProcessed (RecordsRequest) returns (RecordsResponse) {
+    rpc NotifyRecordsProcessed (Records) returns (Response) {
     }
 
-    rpc LatestRecords (RecordsRequest) returns (RecordsResponse) {
+    rpc LatestRecords (Request) returns (Records) {
     }
 
-    rpc InsertRecord (RecordRequest) returns (RecordResponse) {
+    rpc InsertRecord (Record) returns (Response) {
     }
 }
 
@@ -28,20 +28,18 @@ message Entry {
     bool is_latest = 6;
 }
 
-message RecordRequest {
+message Record {
     int32 product_id = 1;
     int32 cost = 2;
 }
 
-message RecordResponse {
-    string message = 1;
+message Request {
 }
 
-
-message RecordsRequest {
+message Records {
     repeated Entry entries = 1;
 }
 
-message RecordsResponse {
+message Response {
     string message = 1;
 }
